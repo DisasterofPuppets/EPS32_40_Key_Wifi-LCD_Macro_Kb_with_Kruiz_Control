@@ -33,6 +33,7 @@ String ircChannel = "";
 WiFiClient wiFiClient;
 IRCClient client(IRC_SERVER, IRC_PORT, wiFiClient);
 
+int keypress = 100; // delay between keyboard press and release
 const byte ROWS = 6;
 const byte COLS = 8;
 
@@ -41,14 +42,14 @@ char hexaKeys[ROWS][COLS] =
 
     {'0', '1', '2', '3', '4', '5', '6', '7'},
     {'8', '9', 'A', 'B', 'C', 'D', 'E', 'F'},
-    {'G', 'H', 'I', 'J'},
-    {'K', 'L', 'M', 'N'},
+    {'G', 'H', '+', '_',')', '(', 'I', 'J'},
+    {'K', 'L', '&', '^','%', '{', 'M', 'N'},
     {'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V'},
     {'W', 'X', 'Y', 'Z', '!', '@', '#', '$'},
 };
 
-byte rowPins[ROWS] = {28, 29, 30, 31, 32, 33};
-byte colPins[COLS] = {13, 14, 15, 16, 17, 18, 19, 20};
+byte rowPins[ROWS] = {25, 26, 27, 32, 33, 35}; //These are GPIO PINS are 25,26,27,32,33,35
+byte colPins[COLS] = {13, 14, 15, 16, 17, 18, 19, 23 }; // PINS 13,14,15,RX2,TX2,18,19,23
 
 Keypad customKeypad = Keypad( makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS); 
 
@@ -101,6 +102,8 @@ lcd.print("Disasterofpuppets");
 
 void loop() {
 
+String Status = "WC : On  M: On";
+
   // Try to connect to chat. If it loses connection try again
   if (!client.connected()) {
     Serial.println("Attempting to connect to " + ircChannel );
@@ -128,11 +131,58 @@ if (customKey){
 
 // LIVE
             // Send command to your bot to trigger the Kruiz Control command
-            sendTwitchMessage("/w drpuppetmaster !live");
-            //clearLCD
-            lcd.setCursor(0,0);
+            sendTwitchMessage("/w drpuppetmaster !Live");
+            delay(keypress);
+            lcd.clear();
             lcd.print("LIVE");
+            lcd.setCursor(0,1);
+            lcd.print(Status);
             break;
+
+
+// BRB
+case '7':
+            
+            sendTwitchMessage("/w drpuppetmaster !Brb");
+            delay(keypress);
+            lcd.clear();
+            lcd.print("BRB");
+            lcd.setCursor(0,1);
+            lcd.print(Status);
+            break;
+            
+
+// GG - AUDIO ONLY
+//case 'W': // tested with another code, appears this button keeps triggering.
+          //Could be due to the 4 button mid section?
+          //  sendTwitchMessage("/w drpuppetmaster !Goodgame");
+          //  delay(keypress);
+          //  break;
+          
+
+// Iphone Bot Cam
+case 'J':
+
+            sendTwitchMessage("/w drpuppetmaster !Botcam");
+            
+            lcd.clear();
+            lcd.print("BotCam");
+            lcd.setCursor(0,1);
+            lcd.print(Status);
+            break;
+
+// Mute
+case '$':
+
+            sendTwitchMessage("/w drpuppetmaster !Mute");
+            delay(keypress);
+            lcd.clear();
+            lcd.print("Mute");
+            lcd.setCursor(0,1);
+            lcd.print(Status);
+            break;
+            
+            
      }
   }
   
