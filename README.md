@@ -9,3 +9,5 @@ Oh, and it's wireless
 
 Using https://github.com/fredimachado/ArduinoIRC
 Kruiz Control https://github.com/Kruiser8/Kruiz-Control
+
+Complete the fields in ExampleCreds.h, save and rename to Creds.h
