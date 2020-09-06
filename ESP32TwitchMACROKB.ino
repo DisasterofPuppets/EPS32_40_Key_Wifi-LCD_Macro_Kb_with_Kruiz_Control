@@ -12,13 +12,13 @@ Using https://github.com/fredimachado/ArduinoIRC
 Kruiz Control https://github.com/Kruiser8/Kruiz-Control
 
  *******************************************************************/
-
 #include <WiFi.h> 
 #include <IRCClient.h>
 #include "Creds.h"
 #include <Keypad.h>
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
+//this causes compiling errors
 
 //-------------EDIT in Creds.h----------
 char ssid[] = WIFI_SSID;       // your network SSID (name)
@@ -40,16 +40,16 @@ const byte COLS = 8;
 char hexaKeys[ROWS][COLS] = 
 {
 
-    {'0', '1', '2', '3', '4', '5', '6', '7'},
+    {'0', '1', '2', '3', '4', '5', '6', '7'}, 
     {'8', '9', 'A', 'B', 'C', 'D', 'E', 'F'},
-    {'G', 'H', '+', '_',')', '(', 'I', 'J'},
-    {'K', 'L', '&', '^','%', '{', 'M', 'N'},
+    {'G', 'H', '~', '~', '~', '~', 'I', 'J'},
+    {'K', 'L', '~', '~', '~', '~', 'M', 'N'},
     {'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V'},
     {'W', 'X', 'Y', 'Z', '!', '@', '#', '$'},
 };
 
-byte rowPins[ROWS] = {25, 26, 27, 32, 33, 35}; //These are GPIO PINS are 25,26,27,32,33,35
-byte colPins[COLS] = {13, 14, 15, 16, 17, 18, 19, 23 }; // PINS 13,14,15,RX2,TX2,18,19,23
+byte rowPins[ROWS] = {13, 14, 27, 26, 25, 33}; //13,14,27,26,25,33 
+byte colPins[COLS] = {15,16,17,18,19,23,32,4}; // PINS 15,RX2,TX2,18,19,23,32,4
 
 Keypad customKeypad = Keypad( makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS); 
 
@@ -60,7 +60,7 @@ LiquidCrystal_I2C lcd(0x27,16,2); // set the LCD address to 0x3F for a 16 chars 
 void setup() {
 
   pinMode(led, OUTPUT);
-
+ // Keyboard.begin();
   Serial.begin(115200);
   Serial.println();
 
@@ -124,24 +124,64 @@ String Status = "WC : On  M: On";
 
 //*********** Keypad Matrix *************
 char customKey = customKeypad.getKey();
+
+//Serial.println((int)customKey);
+//delay(500);
   
 if (customKey){
      switch (customKey){
-        case '0':
+
+// ROW 1-------------------------------------------        
+        
+case '0':
 
 // LIVE
             // Send command to your bot to trigger the Kruiz Control command
+            Serial.println("0");
             sendTwitchMessage("/w drpuppetmaster !Live");
             delay(keypress);
             lcd.clear();
             lcd.print("LIVE");
             lcd.setCursor(0,1);
             lcd.print(Status);
-            break;
+break;
 
+case '1':
+Serial.println("1");
+delay(keypress);
+break;
+
+
+case '2':
+Serial.println("2");
+delay(keypress);
+break;
+
+
+case '3':
+Serial.println("3");
+delay(keypress);
+break;
+
+
+case '4':
+Serial.println("4");
+delay(keypress);
+break;
+
+case '5':
+Serial.println("5");
+delay(keypress);
+break;
+
+case '6':
+Serial.println("6");
+delay(keypress);
+break;
 
 // BRB
 case '7':
+Serial.println("7");
             
             sendTwitchMessage("/w drpuppetmaster !Brb");
             delay(keypress);
@@ -149,19 +189,88 @@ case '7':
             lcd.print("BRB");
             lcd.setCursor(0,1);
             lcd.print(Status);
-            break;
-            
+            delay(keypress);
+break;
 
-// GG - AUDIO ONLY
-//case 'W': // tested with another code, appears this button keeps triggering.
-          //Could be due to the 4 button mid section?
-          //  sendTwitchMessage("/w drpuppetmaster !Goodgame");
-          //  delay(keypress);
-          //  break;
-          
+// ROW 2 ---------------------------------
+
+case '8':
+Serial.println("8");
+delay(keypress);
+break;
+
+case '9':
+Serial.println("9");
+delay(keypress);
+break;
+
+case 'A':
+Serial.println("A");
+delay(keypress);
+break;
+
+case 'B':
+Serial.println("B");
+delay(keypress);
+break;
+
+case 'C':
+Serial.println("C");
+delay(keypress);
+break;
+
+case 'D':
+Serial.println("D");
+delay(keypress);
+break;
+
+case 'E':
+Serial.println("E");
+delay(keypress);
+break;
+
+case 'F':
+Serial.println("F");
+delay(keypress);
+break;
+
+// ROW 3 ---------------------------------
+
+case 'G':
+Serial.println("G");
+delay(keypress);
+break;
+
+case 'H':
+Serial.println("H");
+delay(keypress);
+break;
+
+case 'I':
+Serial.println("I");
+delay(keypress);
+break;
+
+// Media Play / Pause 
+case 'J':
+Serial.println("J");
+            //Keyboard.press(KEY_F14);
+            delay(keypress);
+            //Keyboard.releaseAll();
+delay(keypress);
+break;            
+
+// ROW 4 ---------------------------------
+
+case 'K':
+Serial.println("K");
+delay(keypress);
+break;
 
 // Iphone Bot Cam
-case 'J':
+case 'L':
+Serial.println("L");
+
 
             sendTwitchMessage("/w drpuppetmaster !Botcam");
             
@@ -169,10 +278,109 @@ case 'J':
             lcd.print("BotCam");
             lcd.setCursor(0,1);
             lcd.print(Status);
-            break;
+delay(keypress);
+break;
+
+//Null
+
+case '~':
+Serial.println("~ NULL ~");
+delay(keypress);
+break;
+
+
+case 'M':
+Serial.println("M");
+delay(keypress);
+break;
+
+case 'N':
+Serial.println("N");
+delay(keypress);
+break;          
+
+// ROW 5 ---------------------------------
+
+case 'O':
+Serial.println("O");
+delay(keypress);
+break;
+
+case 'P':
+Serial.println("P");
+delay(keypress);
+break;
+
+case 'Q':
+Serial.println("Q");
+delay(keypress);
+break;
+
+case 'R':
+Serial.println("R");
+delay(keypress);
+break;
+
+case 'S':
+Serial.println("S");
+delay(keypress);
+break;
+
+case 'T':
+Serial.println("T");
+delay(keypress);
+break;
+
+case 'U':
+Serial.println("U");
+delay(keypress);
+break;
+
+case 'V':
+Serial.println("V");
+delay(keypress);
+break;       
+
+// ROW 6 ------------------------------
+
+case 'W': 
+Serial.println("W");
+delay(keypress);
+break;
+          
+case 'X':
+Serial.println("X");
+delay(keypress);
+break;
+
+case 'Y':
+Serial.println("Y");
+delay(keypress);
+break;
+
+case 'Z':
+Serial.println("Z");
+delay(keypress);
+break;
+
+case '!':
+Serial.println("!");
+delay(keypress);
+break;   
+
+case '@':
+Serial.println("@");
+delay(keypress);
+break;   
+
+case '#':
+Serial.println("#");
+delay(keypress);
+break;   
 
 // Mute
 case '$':
+Serial.println("$");
 
             sendTwitchMessage("/w drpuppetmaster !Mute");
             delay(keypress);
@@ -180,7 +388,8 @@ case '$':
             lcd.print("Mute");
             lcd.setCursor(0,1);
             lcd.print(Status);
-            break;
+delay(keypress);
+break;
             
             
      }
