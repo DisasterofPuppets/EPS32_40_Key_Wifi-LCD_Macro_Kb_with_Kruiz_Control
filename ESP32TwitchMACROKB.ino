@@ -26,7 +26,7 @@ char password[] = WIFI_PASS;  // your network key
 
 //------------------------------
 
-
+bool muted = false;
 int led = LED_BUILTIN;
 String ircChannel = "";
 
@@ -104,6 +104,7 @@ void loop() {
 
 String Status = "WC : On  M: On";
 
+
   // Try to connect to chat. If it loses connection try again
   if (!client.connected()) {
     Serial.println("Attempting to connect to " + ircChannel );
@@ -132,264 +133,387 @@ if (customKey){
      switch (customKey){
 
 // ROW 1-------------------------------------------        
-        
-case '0':
-
-// LIVE
-            // Send command to your bot to trigger the Kruiz Control command
-            Serial.println("0");
-            sendTwitchMessage("/w drpuppetmaster !Live");
-            delay(keypress);
-            lcd.clear();
-            lcd.print("LIVE");
-            lcd.setCursor(0,1);
-            lcd.print(Status);
-break;
-
-case '1':
-Serial.println("1");
-delay(keypress);
-break;
 
 
-case '2':
-Serial.println("2");
-delay(keypress);
-break;
+// Live   
+    
+  case '0':
+    // Send command to your bot to trigger the Kruiz Control command
+    Serial.println("0");
+    sendTwitchMessage("/w drpuppetmaster !Live");
+    delay(keypress);
+    lcd.clear();
+    lcd.print("Live");
+    lcd.setCursor(0,1);
+    lcd.print(Status);
+  break;
 
+// Craft Desk
 
-case '3':
-Serial.println("3");
-delay(keypress);
-break;
+  case '1':
+    Serial.println("1");
+    sendTwitchMessage("/w drpuppetmaster !Craft");
+    delay(keypress);
+    lcd.clear();
+    lcd.print("Craft Desk");
+    lcd.setCursor(0,1);
+    lcd.print(Status);
+  break;
 
+// Craft Desk FullScreen Cam
 
-case '4':
-Serial.println("4");
-delay(keypress);
-break;
+  case '2':
+    Serial.println("1");
+    sendTwitchMessage("/w drpuppetmaster !Craft2");
+    delay(keypress);
+    lcd.clear();
+    lcd.print("Craft FaceCam");
+    lcd.setCursor(0,1);
+    lcd.print(Status);
+  break;
 
-case '5':
-Serial.println("5");
-delay(keypress);
-break;
+// Spare
 
-case '6':
-Serial.println("6");
-delay(keypress);
-break;
+  case '3':
+    Serial.println("3");
+    delay(keypress);
+  break;
+
+// Idle
+
+  case '4':
+    Serial.println("4");
+    sendTwitchMessage("/w drpuppetmaster !Idle");
+    delay(keypress);
+    lcd.clear();
+    lcd.print("Idle");
+    lcd.setCursor(0,1);
+    lcd.print(Status);
+  break;
+
+//Disclaimer
+
+  case '5':
+    Serial.println("5");
+    sendTwitchMessage("/w drpuppetmaster !Disclaimer");
+    delay(keypress);
+    lcd.clear();
+    lcd.print("Disclaimer");
+    lcd.setCursor(0,1);
+    lcd.print(Status);
+  break;
+
+// Zoom
+
+  case '6':
+    Serial.println("6");
+    sendTwitchMessage("/w drpuppetmaster !Zoomies");
+    delay(keypress);
+    lcd.clear();
+    lcd.print("Zoom");
+    lcd.setCursor(0,1);
+    lcd.print(Status);
+
+  break;
 
 // BRB
-case '7':
-Serial.println("7");
-            
-            sendTwitchMessage("/w drpuppetmaster !Brb");
-            delay(keypress);
-            lcd.clear();
-            lcd.print("BRB");
-            lcd.setCursor(0,1);
-            lcd.print(Status);
-            delay(keypress);
-break;
+  case '7':
+    Serial.println("7");        
+    sendTwitchMessage("/w drpuppetmaster !Brb");
+    delay(keypress);
+    lcd.clear();
+    lcd.print("BRB");
+    lcd.setCursor(0,1);
+    lcd.print(Status);
+  break;
 
 // ROW 2 ---------------------------------
 
-case '8':
-Serial.println("8");
-delay(keypress);
-break;
+// Fullscreen PC Webcam
 
-case '9':
-Serial.println("9");
-delay(keypress);
-break;
+  case '8':
+    Serial.println("8");
+    sendTwitchMessage("/w drpuppetmaster !FSCam");
+    delay(keypress);
+    lcd.clear();
+    lcd.print("FS Cam");
+    lcd.setCursor(0,1);
+    lcd.print(Status);
+  break;
 
-case 'A':
-Serial.println("A");
-delay(keypress);
-break;
+//Spare
 
-case 'B':
-Serial.println("B");
-delay(keypress);
-break;
+  case '9':
+    Serial.println("9");
+    delay(keypress);
+  break;
 
-case 'C':
-Serial.println("C");
-delay(keypress);
-break;
+// Dodgy Paintbrush Time
+  case 'A':
+    Serial.println("A");
+    sendTwitchMessage("/w drpuppetmaster !PB");
+    delay(keypress);           
+  break;
 
-case 'D':
-Serial.println("D");
-delay(keypress);
-break;
+//Spare
+  case 'B':
+    Serial.println("B");
+    delay(keypress);
+  break;
 
-case 'E':
-Serial.println("E");
-delay(keypress);
-break;
+//Red
+  case 'C':
+    Serial.println("C");
+    sendTwitchMessage("/w drpuppetmaster !red");
+    delay(keypress);
+  break;
 
-case 'F':
-Serial.println("F");
-delay(keypress);
-break;
+//Green
+  case 'D':
+    Serial.println("D");
+    sendTwitchMessage("/w drpuppetmaster !green");
+    delay(keypress);
+  break;
+
+//Blue
+  case 'E':
+    Serial.println("E");
+    sendTwitchMessage("/w drpuppetmaster !blue");
+    delay(keypress);
+  break;
+
+//DoorPrize
+  case 'F':
+    Serial.println("F");
+    sendTwitchMessage("/w drpuppetmaster !Door");
+    delay(keypress);
+    lcd.clear();
+    lcd.print("Door Prize");
+    lcd.setCursor(0,1);
+    lcd.print(Status);
+  break;
 
 // ROW 3 ---------------------------------
 
-case 'G':
-Serial.println("G");
-delay(keypress);
-break;
+// Logitech Webcam Toggle
 
-case 'H':
-Serial.println("H");
-delay(keypress);
-break;
+  case 'G':
+    Serial.println("G");
+    delay(keypress);
+  break;
 
-case 'I':
-Serial.println("I");
-delay(keypress);
-break;
+// Panasonic Cam Toggle
+
+  case 'H':
+    Serial.println("H");
+    delay(keypress);
+  break;
+
+// Spare
+
+  case 'I':
+    Serial.println("I");
+    delay(keypress);
+  break;
 
 // Media Play / Pause 
-case 'J':
-Serial.println("J");
-            //Keyboard.press(KEY_F14);
-            delay(keypress);
-            //Keyboard.releaseAll();
-delay(keypress);
-break;            
 
+  case 'J':
+    Serial.println("J");
+    //Keyboard.press(KEY_F14);
+    delay(keypress);
+    //Keyboard.releaseAll();
+    break;            
+    
 // ROW 4 ---------------------------------
 
-case 'K':
-Serial.println("K");
-delay(keypress);
-break;
 
-// Iphone Bot Cam
-case 'L':
-Serial.println("L");
+//Iphone Desk Cam Toggle
 
+  case 'K':
+    Serial.println("K");
+    delay(keypress);
+  break;
 
-            sendTwitchMessage("/w drpuppetmaster !Botcam");
-            
-            lcd.clear();
-            lcd.print("BotCam");
-            lcd.setCursor(0,1);
-            lcd.print(Status);
-delay(keypress);
-break;
+// Iphone Bot Cam Toggle
+  
+  case 'L':
+    Serial.println("L");
+    sendTwitchMessage("/w drpuppetmaster !Botcam");
+    delay(keypress);
+    lcd.clear();
+    lcd.print("BotCam");
+    lcd.setCursor(0,1);
+    lcd.print(Status);
+  break;
 
-//Null
+//Nulls
 
-case '~':
-Serial.println("~ NULL ~");
-delay(keypress);
-break;
+  case '~':
+    Serial.println("~ NULL ~");
+    delay(keypress);
+  break;
 
+// Media Key Previous Track
 
-case 'M':
-Serial.println("M");
-delay(keypress);
-break;
+  case 'M':
+    Serial.println("M");
+    delay(keypress);
+  break;
 
-case 'N':
-Serial.println("N");
-delay(keypress);
-break;          
+// Media Key Next Track
+
+  case 'N':
+    Serial.println("N");
+    delay(keypress);
+  break;          
 
 // ROW 5 ---------------------------------
 
-case 'O':
-Serial.println("O");
-delay(keypress);
-break;
+// Stamp
 
-case 'P':
-Serial.println("P");
-delay(keypress);
-break;
+  case 'O':
+    Serial.println("O");
+    sendTwitchMessage("/w drpuppetmaster !Stamp");
+    delay(keypress);
+  break;
 
-case 'Q':
-Serial.println("Q");
-delay(keypress);
-break;
+// BS
 
-case 'R':
-Serial.println("R");
-delay(keypress);
-break;
+  case 'P':
+    Serial.println("P");
+    sendTwitchMessage("/w drpuppetmaster !BS");
+    delay(keypress);
+  break;
 
-case 'S':
-Serial.println("S");
-delay(keypress);
-break;
+// KISS
 
-case 'T':
-Serial.println("T");
-delay(keypress);
-break;
+  case 'Q':
+    Serial.println("Q");
+    sendTwitchMessage("/w drpuppetmaster !Kiss");
+    delay(keypress);
+  break;
 
-case 'U':
-Serial.println("U");
-delay(keypress);
-break;
+//PUN
 
-case 'V':
-Serial.println("V");
-delay(keypress);
-break;       
+  case 'R':
+    Serial.println("R");
+    sendTwitchMessage("/w drpuppetmaster !Pun");
+    delay(keypress);
+  break;
+
+// Who are these people?
+
+  case 'S':
+    Serial.println("S");
+    sendTwitchMessage("/w drpuppetmaster !Who");
+    delay(keypress);
+  break;
+
+// I disagree
+
+  case 'T':
+    Serial.println("T");
+    sendTwitchMessage("/w drpuppetmaster !Disagree");
+    delay(keypress);
+  break;
+
+// Sexytimes
+
+  case 'U':
+    Serial.println("U");
+    sendTwitchMessage("/w drpuppetmaster !Sex");
+    delay(keypress);
+  break;
+
+// Why is / isn't it working gif?
+
+  case 'V':
+    Serial.println("V");
+    sendTwitchMessage("/w drpuppetmaster !Why");
+    delay(keypress);
+  break;       
 
 // ROW 6 ------------------------------
 
-case 'W': 
-Serial.println("W");
-delay(keypress);
-break;
-          
-case 'X':
-Serial.println("X");
-delay(keypress);
-break;
+// GG
 
-case 'Y':
-Serial.println("Y");
-delay(keypress);
-break;
+  case 'W': 
+    Serial.println("W");
+    sendTwitchMessage("/w drpuppetmaster !Goodgame");
+    delay(keypress);
+  break;
 
-case 'Z':
-Serial.println("Z");
-delay(keypress);
-break;
+// McScuse me          
 
-case '!':
-Serial.println("!");
-delay(keypress);
-break;   
+  case 'X':
+    Serial.println("X");
+    sendTwitchMessage("/w drpuppetmaster !McScuseme");
+    delay(keypress);
+  break;
 
-case '@':
-Serial.println("@");
-delay(keypress);
-break;   
+// Cheese it
 
-case '#':
-Serial.println("#");
-delay(keypress);
-break;   
+  case 'Y':
+    Serial.println("Y");
+    sendTwitchMessage("/w drpuppetmaster !Cheeseit");
+    delay(keypress);
+  break;
+
+// Tech support
+
+  case 'Z':
+    Serial.println("Z");
+    sendTwitchMessage("/w drpuppetmaster !TechCall");
+    delay(keypress);
+  break;
+
+// Sthap it
+
+  case '!':
+    Serial.println("!");
+    sendTwitchMessage("/w drpuppetmaster !Sthapit");
+    delay(keypress);
+  break;   
+
+// Phrasing
+
+  case '@':
+    Serial.println("@");
+    sendTwitchMessage("/w drpuppetmaster !Phrasing");
+    delay(keypress);
+  break;   
+
+// Kruiz Control Reset
+
+  case '#':
+    Serial.println("#");
+    sendTwitchMessage("/w drpuppetmaster !Reset");
+    delay(keypress);
+  break;   
 
 // Mute
-case '$':
-Serial.println("$");
 
-            sendTwitchMessage("/w drpuppetmaster !Mute");
-            delay(keypress);
-            lcd.clear();
-            lcd.print("Mute");
-            lcd.setCursor(0,1);
-            lcd.print(Status);
-delay(keypress);
-break;
+  case '$':
+    Serial.println("$");
+    if (muted == false) {
+      sendTwitchMessage("/w drpuppetmaster !Mute");
+      delay(keypress);
+      lcd.clear();
+      lcd.setCursor(0,1);
+      lcd.print(Status);
+      muted = true ;     
+    }
+    else if (muted == true) {
+      sendTwitchMessage("/w drpuppetmaster !Mute");
+      delay(keypress);
+      lcd.clear();
+      lcd.setCursor(0,1);
+      lcd.print(Status);
+      muted = false;
+    }
+    
+  break;
             
             
      }
