@@ -26,10 +26,14 @@ char password[] = WIFI_PASS;  // your network key
 
 //------------------------------
 
-bool muted = false;
+bool muted = 1;
+bool logi = 1;
+bool cdcam = 1;
+bool panacam = 1;
+bool botscam = 1;
 int led = LED_BUILTIN;
 String ircChannel = "";
-
+int runonce = 0;
 WiFiClient wiFiClient;
 IRCClient client(IRC_SERVER, IRC_PORT, wiFiClient);
 
@@ -62,8 +66,7 @@ void setup() {
   pinMode(led, OUTPUT);
  // Keyboard.begin();
   Serial.begin(115200);
-  Serial.println();
-
+  
   // Set WiFi to station mode and disconnect from an AP if it was Previously
   // connected
   WiFi.mode(WIFI_STA);
@@ -92,18 +95,10 @@ lcd.init(); // initialize the lcd
 lcd.init();
 // Print a message to the LCD.
 lcd.backlight();
-lcd.setCursor(0,0);
-lcd.print("KC Stream Deck");
-lcd.setCursor(0,1);
-lcd.print("Disasterofpuppets");
-
 
 }
 
 void loop() {
-
-String Status = "WC : On  M: On";
-
 
   // Try to connect to chat. If it loses connection try again
   if (!client.connected()) {
@@ -113,6 +108,20 @@ String Status = "WC : On  M: On";
     if (client.connect(TWITCH_BOT_NAME, "", TWITCH_OAUTH_TOKEN)) {
       client.sendRaw("JOIN " + ircChannel);
       Serial.println("connected and ready to rock");
+
+if (runonce == 0){
+//run your default state here, eg I duplicated button 1's functionality
+
+    sendTwitchMessage("/w drpuppetmaster !Live");
+    delay(keypress);
+    lcd.setCursor(0,0);
+    lcd.print("                ");
+    lcd.setCursor(0,0);
+    lcd.print("PC / Live");
+    runonce = 1;
+}
+
+      
       //sendTwitchMessage("Ready to go Boss!");
     } else {
       Serial.println("failed... try again in 5 seconds");
@@ -128,6 +137,10 @@ char customKey = customKeypad.getKey();
 
 //Serial.println((int)customKey);
 //delay(500);
+
+//Serial.print("Muted State: ");
+//Serial.println(muted);
+
   
 if (customKey){
      switch (customKey){
@@ -142,10 +155,10 @@ if (customKey){
     Serial.println("0");
     sendTwitchMessage("/w drpuppetmaster !Live");
     delay(keypress);
-    lcd.clear();
-    lcd.print("Live");
-    lcd.setCursor(0,1);
-    lcd.print(Status);
+    lcd.setCursor(0,0);
+    lcd.print("                ");
+    lcd.setCursor(0,0);
+    lcd.print("PC / Live");
   break;
 
 // Craft Desk
@@ -154,10 +167,10 @@ if (customKey){
     Serial.println("1");
     sendTwitchMessage("/w drpuppetmaster !Craft");
     delay(keypress);
-    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print("                ");
+    lcd.setCursor(0,0);
     lcd.print("Craft Desk");
-    lcd.setCursor(0,1);
-    lcd.print(Status);
   break;
 
 // Craft Desk FullScreen Cam
@@ -166,10 +179,10 @@ if (customKey){
     Serial.println("1");
     sendTwitchMessage("/w drpuppetmaster !Craft2");
     delay(keypress);
-    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print("                ");
+    lcd.setCursor(0,0);
     lcd.print("Craft FaceCam");
-    lcd.setCursor(0,1);
-    lcd.print(Status);
   break;
 
 // Spare
@@ -185,10 +198,11 @@ if (customKey){
     Serial.println("4");
     sendTwitchMessage("/w drpuppetmaster !Idle");
     delay(keypress);
-    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print("                ");
+    lcd.setCursor(0,0);
     lcd.print("Idle");
-    lcd.setCursor(0,1);
-    lcd.print(Status);
+
   break;
 
 //Disclaimer
@@ -197,10 +211,11 @@ if (customKey){
     Serial.println("5");
     sendTwitchMessage("/w drpuppetmaster !Disclaimer");
     delay(keypress);
-    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print("                ");
+    lcd.setCursor(0,0);
     lcd.print("Disclaimer");
-    lcd.setCursor(0,1);
-    lcd.print(Status);
+
   break;
 
 // Zoom
@@ -209,10 +224,11 @@ if (customKey){
     Serial.println("6");
     sendTwitchMessage("/w drpuppetmaster !Zoomies");
     delay(keypress);
-    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print("                ");
+    lcd.setCursor(0,0);
     lcd.print("Zoom");
-    lcd.setCursor(0,1);
-    lcd.print(Status);
+
 
   break;
 
@@ -221,10 +237,11 @@ if (customKey){
     Serial.println("7");        
     sendTwitchMessage("/w drpuppetmaster !Brb");
     delay(keypress);
-    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print("                ");
+    lcd.setCursor(0,0);
     lcd.print("BRB");
-    lcd.setCursor(0,1);
-    lcd.print(Status);
+
   break;
 
 // ROW 2 ---------------------------------
@@ -235,10 +252,11 @@ if (customKey){
     Serial.println("8");
     sendTwitchMessage("/w drpuppetmaster !FSCam");
     delay(keypress);
-    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print("                ");
+    lcd.setCursor(0,0);
     lcd.print("FS Cam");
-    lcd.setCursor(0,1);
-    lcd.print(Status);
+
   break;
 
 //Spare
@@ -287,10 +305,10 @@ if (customKey){
     Serial.println("F");
     sendTwitchMessage("/w drpuppetmaster !Door");
     delay(keypress);
-    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print("                ");
+    lcd.setCursor(0,0);
     lcd.print("Door Prize");
-    lcd.setCursor(0,1);
-    lcd.print(Status);
   break;
 
 // ROW 3 ---------------------------------
@@ -299,16 +317,34 @@ if (customKey){
 
   case 'G':
     Serial.println("G");
-    delay(keypress);
-  break;
+    if (logi) {
+      sendTwitchMessage("/w drpuppetmaster !Logitechhide");
+      delay(keypress);
+      logi = 0;
+    }
+    else if (!logi) {
+      sendTwitchMessage("/w drpuppetmaster !Logitechshow");
+      delay(keypress);
+      logi = 1;     
+    }
+    break;
 
 // Panasonic Cam Toggle
 
   case 'H':
     Serial.println("H");
-    delay(keypress);
-  break;
-
+    if (panacam) {
+      sendTwitchMessage("/w drpuppetmaster !Panahide");
+      delay(keypress);
+      panacam = 0;
+    }
+    else if (!panacam) {
+      sendTwitchMessage("/w drpuppetmaster !Panashow");
+      delay(keypress);
+      panacam = 1;     
+    }
+    break;
+    
 // Spare
 
   case 'I':
@@ -332,20 +368,33 @@ if (customKey){
 
   case 'K':
     Serial.println("K");
-    delay(keypress);
-  break;
+    if (cdcam) {
+      sendTwitchMessage("/w drpuppetmaster !CDhide");
+      delay(keypress);
+      cdcam = 0;
+    }
+    else if (!cdcam) {
+      sendTwitchMessage("/w drpuppetmaster !CDshow");
+      delay(keypress);
+      cdcam = 1;     
+    }
+    break;
 
 // Iphone Bot Cam Toggle
   
   case 'L':
     Serial.println("L");
-    sendTwitchMessage("/w drpuppetmaster !Botcam");
-    delay(keypress);
-    lcd.clear();
-    lcd.print("BotCam");
-    lcd.setCursor(0,1);
-    lcd.print(Status);
-  break;
+    if (botscam) {
+      sendTwitchMessage("/w drpuppetmaster !bothide");
+      delay(keypress);
+      botscam = 0;
+    }
+    else if (!botscam) {
+      sendTwitchMessage("/w drpuppetmaster !botshow");
+      delay(keypress);
+      botscam = 1;     
+    }
+    break;
 
 //Nulls
 
@@ -496,24 +545,23 @@ if (customKey){
 
   case '$':
     Serial.println("$");
-    if (muted == false) {
+    if (muted) {
       sendTwitchMessage("/w drpuppetmaster !Mute");
       delay(keypress);
-      lcd.clear();
       lcd.setCursor(0,1);
-      lcd.print(Status);
-      muted = true ;     
+      lcd.print("                ");
+      lcd.setCursor(0,1);
+      lcd.print("***MUTED***");
+      muted = 0;
     }
-    else if (muted == true) {
-      sendTwitchMessage("/w drpuppetmaster !Mute");
+    else if (!muted) {
+      sendTwitchMessage("/w drpuppetmaster !UnMute");
       delay(keypress);
-      lcd.clear();
       lcd.setCursor(0,1);
-      lcd.print(Status);
-      muted = false;
+      lcd.print("                ");
+      muted = 1;     
     }
-    
-  break;
+    break;
             
             
      }
