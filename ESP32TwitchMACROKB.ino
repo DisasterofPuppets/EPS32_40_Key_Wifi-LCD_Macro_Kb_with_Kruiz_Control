@@ -11,6 +11,8 @@ Oh, and it's wireless
 Using https://github.com/fredimachado/ArduinoIRC
 Kruiz Control https://github.com/Kruiser8/Kruiz-Control
 
+
+// Don't forget to edit ExampleCreds.h and save as Creds.h
  *******************************************************************/
 #include <WiFi.h> 
 #include <IRCClient.h>
@@ -18,7 +20,6 @@ Kruiz Control https://github.com/Kruiser8/Kruiz-Control
 #include <Keypad.h>
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
-//this causes compiling errors
 
 //-------------EDIT in Creds.h----------
 char ssid[] = WIFI_SSID;       // your network SSID (name)
@@ -37,7 +38,7 @@ int runonce = 0;
 WiFiClient wiFiClient;
 IRCClient client(IRC_SERVER, IRC_PORT, wiFiClient);
 
-int keypress = 100; // delay between keyboard press and release
+int keypress = 100; // delay between keypad press and release
 const byte ROWS = 6;
 const byte COLS = 8;
 
@@ -57,14 +58,13 @@ byte colPins[COLS] = {15,16,17,18,19,23,32,4}; // PINS 15,RX2,TX2,18,19,23,32,4
 
 Keypad customKeypad = Keypad( makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS); 
 
-LiquidCrystal_I2C lcd(0x27,16,2); // set the LCD address to 0x3F for a 16 chars and 2 line display
+LiquidCrystal_I2C lcd(0x27,16,2); 
 
 
 // put your setup code here, to run once:
 void setup() {
 
   pinMode(led, OUTPUT);
- // Keyboard.begin();
   Serial.begin(115200);
   
   // Set WiFi to station mode and disconnect from an AP if it was Previously
@@ -93,7 +93,6 @@ void setup() {
 
 lcd.init(); // initialize the lcd
 lcd.init();
-// Print a message to the LCD.
 lcd.backlight();
 
 }
@@ -121,7 +120,7 @@ if (runonce == 0){
     runonce = 1;
 }
 
-      
+      //Uncomment below if you want a twitch chat message on connect
       //sendTwitchMessage("Ready to go Boss!");
     } else {
       Serial.println("failed... try again in 5 seconds");
@@ -134,14 +133,7 @@ if (runonce == 0){
 
 //*********** Keypad Matrix *************
 char customKey = customKeypad.getKey();
-
-//Serial.println((int)customKey);
-//delay(500);
-
-//Serial.print("Muted State: ");
-//Serial.println(muted);
-
-  
+ 
 if (customKey){
      switch (customKey){
 
@@ -352,13 +344,11 @@ if (customKey){
     delay(keypress);
   break;
 
-// Media Play / Pause 
+// Spare
 
   case 'J':
     Serial.println("J");
-    //Keyboard.press(KEY_F14);
     delay(keypress);
-    //Keyboard.releaseAll();
     break;            
     
 // ROW 4 ---------------------------------
@@ -403,14 +393,14 @@ if (customKey){
     delay(keypress);
   break;
 
-// Media Key Previous Track
+// Spare
 
   case 'M':
     Serial.println("M");
     delay(keypress);
   break;
 
-// Media Key Next Track
+// Spare
 
   case 'N':
     Serial.println("N");
@@ -572,7 +562,6 @@ if (customKey){
 void sendTwitchMessage(String message) {
   client.sendMessage(ircChannel, message);
 }
-
 
 void callback(IRCMessage ircMessage) {
   //Serial.println("In CallBack");
