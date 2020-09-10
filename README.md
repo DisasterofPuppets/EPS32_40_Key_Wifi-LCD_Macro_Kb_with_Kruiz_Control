@@ -20,3 +20,6 @@ I have included the files to print in this way however I have also provided the 
 
 
 Once printed I used a torch to heat up and insert 3mm hex nuts into the lid columns. Be careful here, there is not alot of material around the end.
+
+I have also included BlankButtonMaster.3mf which should allow you to make most letter combinations for custom blank keys. 
+If there is button label you are unable to make with this let me know and I should be able to update the file for future users.
