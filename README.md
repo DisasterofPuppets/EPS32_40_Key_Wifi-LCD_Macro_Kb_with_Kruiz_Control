@@ -17,3 +17,6 @@ The 3D files.
 I printed mine in sections and glued them together to save on support material.
 
 I have included the files to print in this way however I have also provided the option to print the base as one part.
+
+
+Once printed I used a torch to heat up and insert 3mm hex nuts into the lid columns. Be careful here, there is not alot of material around the end.
