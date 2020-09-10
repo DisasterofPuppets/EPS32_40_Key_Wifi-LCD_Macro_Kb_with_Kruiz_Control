@@ -16,6 +16,4 @@ The 3D files.
 
 I printed mine in sections and glued them together to save on support material.
 
-I have included the files to do it as such along with an option to print the base in one part.
-
-The Lid is the same for both sets.
+I have included the files to print in this way however I have also provided the option to print the base as one part.
