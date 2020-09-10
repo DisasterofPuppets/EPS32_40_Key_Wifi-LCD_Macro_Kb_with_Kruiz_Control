@@ -11,3 +11,11 @@ Using https://github.com/fredimachado/ArduinoIRC
 Kruiz Control https://github.com/Kruiser8/Kruiz-Control
 
 Complete the fields in ExampleCreds.h, save and rename to Creds.h
+
+The 3D files.
+
+I printed mine in sections and glued them together to save on support material.
+
+I have included the files to do it as such along with an option to print the base in one part.
+
+The Lid is the same for both sets.
