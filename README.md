@@ -1,4 +1,4 @@
-![GitHub Logo](/images/lPrototype.jpg)
+![GitHub Logo](/images/Prototype.jpg)
 Format: ![Alt Text](url)
 
 Disaster of Puppets
