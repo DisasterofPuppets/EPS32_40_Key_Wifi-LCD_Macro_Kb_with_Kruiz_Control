@@ -11,6 +11,10 @@ Using https://github.com/fredimachado/ArduinoIRC
 Kruiz Control https://github.com/Kruiser8/Kruiz-Control
 
 It is assumed you have already installed Kruiz-Control. If not refer to documentation from the link above.
+It is also assumed you know how to install any required Arduino Libraries. See the below as a starting point.
+
+For the ESP32 Board: https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/
+Generic Library addition: https://www.youtube.com/watch?v=M6PZOqNHKxM
 
 **************************************************************************************
 
