@@ -40,20 +40,23 @@ Example: https://www.ebay.com.au/itm/1602-16X2-LCD-Display-IIC-I2C-TWI-SPI-Seria
 ## Instructions
 
 **Step # 1**
+
 Complete the fields in Creds.h and save
 
 **Step # 2**
+
 Print the base.stl and lid.stl files
 I have also included BlankButtonMaster.3mf which should allow you to make most letter combinations for custom blank keys. 
 If there is button label you are unable to make with this let me know and I should be able to update the file for future users.
 
 **Step # 3**
+
 Wire as per 40KeyWifiSDKCWiring.png
 
 **Step # 4**
+
 Change the button coding to your specific needs in ESP32TwitchMACROKB.ino
 
 **Step # 5**
+
 Using ExampleTriggers Code for Kruiz Control.txt insert the specific commands into Triggers.txt
-
-
