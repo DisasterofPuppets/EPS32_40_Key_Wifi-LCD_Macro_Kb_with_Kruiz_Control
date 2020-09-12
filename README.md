@@ -1,3 +1,6 @@
+![GitHub Logo](/images/lPrototype.jpg)
+Format: ![Alt Text](url)
+
 Disaster of Puppets
 YouTube: Http://disasterofpuppets.com
 Twitch: Https://twitch.tv/disasterofpuppets
