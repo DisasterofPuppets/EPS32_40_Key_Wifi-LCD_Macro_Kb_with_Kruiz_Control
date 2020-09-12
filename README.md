@@ -1,3 +1,4 @@
+#40 Key Macro Keyboard using Kruiz Control
 ![GitHub Logo](Prototype.jpg)
 
 Disaster of Puppets
@@ -12,15 +13,15 @@ Oh, and it's wireless
 Using https://github.com/fredimachado/ArduinoIRC
 Kruiz Control https://github.com/Kruiser8/Kruiz-Control
 
-It is assumed you have already installed Kruiz-Control. If not refer to documentation from the link above.
-It is also assumed you know how to install any required Arduino Libraries. See the below as a starting point.
+*It is assumed you have already installed Kruiz-Control. If not refer to documentation from the link above.*
+*It is also assumed you know how to install any required Arduino Libraries. See the below as a starting point.*
 
 For the ESP32 Board: https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/
 Generic Library addition: https://www.youtube.com/watch?v=M6PZOqNHKxM
 
 **************************************************************************************
 
-Required Materials:
+##Required Materials:
 
 - 40 x Cherry MX switches / your choice of Key switches.
 Example: https://www.ebay.com.au/itm/70Pcs-3-Pin-Mechanical-Keyboard-Switch-Blue-Plate-Gateron-Keyboard-RGB-Series/233659187775?ssPageName=STRK%3AMEBIDX%3AIT&_trksid=p2057872.m2749.l2649
@@ -36,6 +37,7 @@ Example: https://www.ebay.com.au/itm/1602-16X2-LCD-Display-IIC-I2C-TWI-SPI-Seria
 - 3D printer or access to someone who can print the files for you
 
 **************************************************************************************
+##Instructions
 
 Step # 1
 Complete the fields in Creds.h and save
