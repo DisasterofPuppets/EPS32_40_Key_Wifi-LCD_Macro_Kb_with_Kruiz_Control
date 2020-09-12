@@ -1,0 +1,148 @@
+****************** Stream Deck Triggers ****************
+# ROW 1############################
+
+OnCommand b 1 !Live
+OBS Scene PC
+
+OnCommand b 1 !Craft
+OBS Scene CraftDesk
+
+OnCommand b 1 !Craft2
+OBS Scene CraftDeskFaceCam
+
+OnCommand b 1 !Idle
+OBS Scene Idle
+
+OnCommand b 1 !Disclaimer
+OBS Scene Disclaimer
+
+OnCommand b 1 !Zoomies
+OBS Scene PCZoom
+
+OnCommand b 1 !Brb
+OBS Scene BRB
+
+# ROW 2############################
+
+OnCommand b 1 !FSCam
+OBS Scene FullscreenCam
+
+OnCommand b 10 !PB
+OBS SceneSource 'MattsTriggers' DodgyPB on
+Delay 8
+OBS SceneSource 'MattsTriggers' DodgyPB off
+
+OnCommand b 10 !Door
+OBS Scene DOORPRIZE
+
+OnCommand b 1 !Logitechhide
+OBS SceneSource 'PC' LTSmall off
+
+OnCommand b 1 !Logitechshow
+OBS SceneSource 'PC' LTSmall on
+
+OnCommand b 1 !Panahide
+OBS SceneSource 'USBCapPanasonic' USBINPUT off
+OBS SceneSource 'CraftDesk' CamFrame off
+
+OnCommand b 1 !Panashow
+OBS SceneSource 'USBCapPanasonic' USBINPUT on
+OBS SceneSource 'CraftDesk' CamFrame on
+
+OnCommand b 1 !bothide
+OBS SceneSource 'BotsCam' BotIvCam off
+
+OnCommand b 1 !botshow
+OBS SceneSource 'BotsCam' BotIvCam on
+
+OnCommand b 1 !CDhide
+OBS SceneSource 'CraftDesk' CraftTableIphone5 off
+OBS SceneSource 'CraftDeskFaceCam' CraftTableIphone5 off
+OBS SceneSource 'PC' CCam_Small off
+OBS SceneSource 'CraftDesk' CamFrame off
+OBS SceneSource 'CraftDeskFaceCam' CamFrame off
+
+OnCommand b 1 !CDshow
+OBS SceneSource 'CraftDesk' CraftTableIphone5 on
+OBS SceneSource 'CraftDeskFaceCam' CraftTableIphone5 on
+OBS SceneSource 'PC' CCam_Small on
+OBS SceneSource 'CraftDesk' CamFrame on
+OBS SceneSource 'CraftDeskFaceCam' CamFrame on
+
+
+OnCommand b 10 !Stamp
+OBS SceneSource 'MattsTriggers' Stamp on
+Delay 4
+OBS SceneSource 'MattsTriggers' Stamp off
+
+OnCommand b 10 !BS
+OBS SceneSource 'MattsTriggers' BS on
+Delay 7
+OBS SceneSource 'MattsTriggers' BS off
+
+OnCommand b 10 !Kiss
+OBS SceneSource 'MattsTriggers' Bridgette_Kiss on
+Delay 4
+OBS SceneSource 'MattsTriggers' Bridgette_Kiss off
+
+OnCommand b 10 !Pun
+OBS SceneSource 'MattsTriggers' OMR_Pun on
+Delay 4
+OBS SceneSource 'MattsTriggers' OMR_Pun off
+
+OnCommand b 10 !Who
+OBS SceneSource 'MattsTriggers' OMR_Whoarethese on
+Delay 4
+OBS SceneSource 'MattsTriggers' OMR_Whoarethese off
+
+OnCommand b 10 !Disagree
+OBS SceneSource 'MattsTriggers' OMR_Idisagree on
+Delay 4
+OBS SceneSource 'MattsTriggers' OMR_Idisagree off
+
+OnCommand b 9 !Sex
+Random Equal "OBS SceneSource 'MattsTriggers' 'OMR_Sexwithme' on" "OBS SceneSource 'MattsTriggers' 'Bridgette_Sexwithus' on" "OBS SceneSource 'MattsTriggers' 'Chester_Hehassexwithus' on" "OBS SceneSource 'MattsTriggers' 'Marc_Sexwithus' on" "OBS SceneSource 'MattsTriggers' 'Marc_Sexwithuslonger' on"
+Delay 9
+OBS SceneSource 'MattsTriggers' OMR_Sexwithme off 
+OBS SceneSource 'MattsTriggers' Bridgette_Sexwithus off 
+OBS SceneSource 'MattsTriggers' Chester_Hehassexwithus off
+OBS SceneSource 'MattsTriggers' Marc_Sexwithus off
+OBS SceneSource 'MattsTriggers' Marc_Sexwithuslonger off
+Exit
+
+OnCommand b 10 !Why
+OBS SceneSource 'MattsTriggers' Why on
+Delay 9
+OBS SceneSource 'MattsTriggers' Why off
+
+OnCommand b 5 !Goodgame
+Play 100 wait gg.mp3
+
+OnCommand b 5 !Sthapit
+Play 100 wait Arnie_Stop_IT.mp3
+
+OnCommand b 5 !Cheeseit
+Play 100 wait bender_cheese_it.mp3
+
+OnCommand b 5 !McScuseme
+Play 100 wait mcscuse-me-bitch.mp3
+
+OnCommand b 5 !TechCall
+Play 100 wait TechCall.mp3
+
+OnCommand b 5 !Phrasing
+Play 100 wait um_phrasing.mp3
+
+OnCommand b 10 !Reset
+Reset
+Chat Send "Kruiz Control has been reset, That's what I use to run the stream. You should check it out here : https://github.com/Kruiser8/Kruiz-Control"
+
+OnCommand b 1 !Mute
+OBS SceneSource 'PC' ATUSBMIC off
+OBS SceneSource 'CraftDesk' CraftMic off
+OBS SceneSource 'CraftDeskFaceCam' CraftMic off
+
+OnCommand b 1 !UnMute
+OBS SceneSource 'PC' ATUSBMIC on
+OBS SceneSource 'CraftDesk' CraftMic on
+OBS SceneSource 'CraftDeskFaceCam' CraftMic on

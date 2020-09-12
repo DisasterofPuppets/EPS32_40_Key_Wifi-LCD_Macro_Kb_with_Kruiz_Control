@@ -168,7 +168,7 @@ if (customKey){
 // Craft Desk FullScreen Cam
 
   case '2':
-    Serial.println("1");
+    Serial.println("2");
     sendTwitchMessage("/w drpuppetmaster !Craft2");
     delay(keypress);
     lcd.setCursor(0,0);
