@@ -1,5 +1,4 @@
 ![GitHub Logo](Prototype.jpg)
-Format: ![Alt Text](url)
 
 Disaster of Puppets
 YouTube: Http://disasterofpuppets.com
