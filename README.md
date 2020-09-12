@@ -10,16 +10,26 @@ Oh, and it's wireless
 Using https://github.com/fredimachado/ArduinoIRC
 Kruiz Control https://github.com/Kruiser8/Kruiz-Control
 
-Complete the fields in ExampleCreds.h, save and rename to Creds.h
+Required Materials:
 
-The 3D files.
+40 x Cherry MX switches / your choice of Key switches.
+Example: 
 
-I printed mine in sections and glued them together to save on support material.
+Step # 1
+Complete the fields in Creds.h and save
 
-I have included the files to print in this way however I have also provided the option to print the base as one part.
-
-
-Once printed I used a torch to heat up and insert 3mm hex nuts into the lid columns. Be careful here, there is not alot of material around the end.
-
+Step # 2 
+Print the base.stl and lid.stl files
 I have also included BlankButtonMaster.3mf which should allow you to make most letter combinations for custom blank keys. 
 If there is button label you are unable to make with this let me know and I should be able to update the file for future users.
+
+Step # 3
+Wire as per 40KeyWifiSDKCWiring.png
+
+Step # 4
+Change the button coding to your specific needs in ESP32TwitchMACROKB.ino
+
+Step # 5
+Using ExampleTriggers Code for Kruiz Control.txt insert the specific commands into Triggers.txt
+
+
