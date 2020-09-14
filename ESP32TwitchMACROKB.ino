@@ -12,7 +12,7 @@ Using https://github.com/fredimachado/ArduinoIRC
 Kruiz Control https://github.com/Kruiser8/Kruiz-Control
 
 
-// Don't forget to edit ExampleCreds.h and save as Creds.h
+// Don't forget to edit Creds.h
  *******************************************************************/
 #include <WiFi.h> 
 #include <IRCClient.h>
