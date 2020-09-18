@@ -29,6 +29,9 @@ char password[] = WIFI_PASS;  // your network key
 
 bool muted = 1;
 bool logi = 1;
+bool SJ = 1;
+bool AS = 1;
+bool GTG = 1;
 bool cdcam = 1;
 bool panacam = 1;
 bool botscam = 1;
@@ -112,14 +115,12 @@ void loop() {
 if (runonce == 0){
 //run your default state here, eg I duplicated button 1's functionality
 
-  //  sendTwitchMessage("/w Changemetoyourbotname !Live"); I would't rcommend. If you move around or disconnect it will switch to this on start up;
+  //  sendTwitchMessage("/w drpuppetmaster !Live"); I would't rcommend. If you move around or disconnect it will switch to this on start up;
     delay(keypress);
-    lcd.setCursor(0,0);
-    lcd.print("                ");
     lcd.setCursor(0,0);
     lcd.print("D.I.Y. Stream Deck");
     lcd.setCursor(0,1);
-    lcd.print("@DOFPuppets");
+    lcd.print("                ");
     runonce = 1;
 }
 
@@ -148,7 +149,7 @@ if (customKey){
   case '0':
     // Send command to your bot to trigger the Kruiz Control command
     Serial.println("0");
-    sendTwitchMessage("/w Changemetoyourbotname !Live");
+    sendTwitchMessage("/w drpuppetmaster !Live");
     delay(keypress);
     lcd.setCursor(0,0);
     lcd.print("                ");
@@ -160,7 +161,7 @@ if (customKey){
 
   case '1':
     Serial.println("1");
-    sendTwitchMessage("/w Changemetoyourbotname !Craft");
+    sendTwitchMessage("/w drpuppetmaster !Craft");
     delay(keypress);
     lcd.setCursor(0,0);
     lcd.print("                ");
@@ -172,7 +173,7 @@ if (customKey){
 
   case '2':
     Serial.println("2");
-    sendTwitchMessage("/w Changemetoyourbotname !Craft2");
+    sendTwitchMessage("/w drpuppetmaster !Craft2");
     delay(keypress);
     lcd.setCursor(0,0);
     lcd.print("                ");
@@ -184,6 +185,7 @@ if (customKey){
 
   case '3':
     Serial.println("3");
+    sendTwitchMessage("/w drpuppetmaster !Censor");
     delay(keypress);
   break;
 
@@ -191,7 +193,7 @@ if (customKey){
 
   case '4':
     Serial.println("4");
-    sendTwitchMessage("/w Changemetoyourbotname !Idle");
+    sendTwitchMessage("/w drpuppetmaster !Idle");
     delay(keypress);
     lcd.setCursor(0,0);
     lcd.print("                ");
@@ -204,7 +206,7 @@ if (customKey){
 
   case '5':
     Serial.println("5");
-    sendTwitchMessage("/w Changemetoyourbotname !Disclaimer");
+    sendTwitchMessage("/w drpuppetmaster !Disclaimer");
     delay(keypress);
     lcd.setCursor(0,0);
     lcd.print("                ");
@@ -217,7 +219,7 @@ if (customKey){
 
   case '6':
     Serial.println("6");
-    sendTwitchMessage("/w Changemetoyourbotname !Zoomies");
+    sendTwitchMessage("/w drpuppetmaster !Zoomies");
     delay(keypress);
     lcd.setCursor(0,0);
     lcd.print("                ");
@@ -230,7 +232,7 @@ if (customKey){
 // BRB
   case '7':
     Serial.println("7");        
-    sendTwitchMessage("/w Changemetoyourbotname !Brb");
+    sendTwitchMessage("/w drpuppetmaster !Brb");
     delay(keypress);
     lcd.setCursor(0,0);
     lcd.print("                ");
@@ -245,7 +247,7 @@ if (customKey){
 
   case '8':
     Serial.println("8");
-    sendTwitchMessage("/w Changemetoyourbotname !FSCam");
+    sendTwitchMessage("/w drpuppetmaster !FSCam");
     delay(keypress);
     lcd.setCursor(0,0);
     lcd.print("                ");
@@ -264,7 +266,7 @@ if (customKey){
 // Dodgy Paintbrush Time
   case 'A':
     Serial.println("A");
-    sendTwitchMessage("/w Changemetoyourbotname !PB");
+    sendTwitchMessage("/w drpuppetmaster !PB");
     delay(keypress);           
   break;
 
@@ -277,28 +279,28 @@ if (customKey){
 //Red
   case 'C':
     Serial.println("C");
-    sendTwitchMessage("/w Changemetoyourbotname !red");
+    sendTwitchMessage("/w drpuppetmaster !red");
     delay(keypress);
   break;
 
 //Green
   case 'D':
     Serial.println("D");
-    sendTwitchMessage("/w Changemetoyourbotname !green");
+    sendTwitchMessage("/w drpuppetmaster !green");
     delay(keypress);
   break;
 
 //Blue
   case 'E':
     Serial.println("E");
-    sendTwitchMessage("/w Changemetoyourbotname !blue");
+    sendTwitchMessage("/w drpuppetmaster !blue");
     delay(keypress);
   break;
 
 //DoorPrize
   case 'F':
     Serial.println("F");
-    sendTwitchMessage("/w Changemetoyourbotname !Door");
+    sendTwitchMessage("/w drpuppetmaster !Door");
     delay(keypress);
     lcd.setCursor(0,0);
     lcd.print("                ");
@@ -313,12 +315,12 @@ if (customKey){
   case 'G':
     Serial.println("G");
     if (logi) {
-      sendTwitchMessage("/w Changemetoyourbotname !Logitechhide");
+      sendTwitchMessage("/w drpuppetmaster !Logitechhide");
       delay(keypress);
       logi = 0;
     }
     else if (!logi) {
-      sendTwitchMessage("/w Changemetoyourbotname !Logitechshow");
+      sendTwitchMessage("/w drpuppetmaster !Logitechshow");
       delay(keypress);
       logi = 1;     
     }
@@ -329,12 +331,12 @@ if (customKey){
   case 'H':
     Serial.println("H");
     if (panacam) {
-      sendTwitchMessage("/w Changemetoyourbotname !Panahide");
+      sendTwitchMessage("/w drpuppetmaster !Panahide");
       delay(keypress);
       panacam = 0;
     }
     else if (!panacam) {
-      sendTwitchMessage("/w Changemetoyourbotname !Panashow");
+      sendTwitchMessage("/w drpuppetmaster !Panashow");
       delay(keypress);
       panacam = 1;     
     }
@@ -344,6 +346,7 @@ if (customKey){
 
   case 'I':
     Serial.println("I");
+    sendTwitchMessage("/w drpuppetmaster !Celeb");
     delay(keypress);
   break;
 
@@ -351,8 +354,18 @@ if (customKey){
 
   case 'J':
     Serial.println("J");
-    delay(keypress);
-    break;            
+      if (SJ) {
+      sendTwitchMessage("/w drpuppetmaster !Scarlet");;
+      delay(keypress);
+      SJ = 0;
+    }
+    else if (!SJ) {
+      sendTwitchMessage("/w drpuppetmaster !ScarlettOff");
+      delay(keypress);
+      SJ = 1;     
+    }
+    break;
+          
     
 // ROW 4 ---------------------------------
 
@@ -362,12 +375,12 @@ if (customKey){
   case 'K':
     Serial.println("K");
     if (cdcam) {
-      sendTwitchMessage("/w Changemetoyourbotname !CDhide");
+      sendTwitchMessage("/w drpuppetmaster !CDhide");
       delay(keypress);
       cdcam = 0;
     }
     else if (!cdcam) {
-      sendTwitchMessage("/w Changemetoyourbotname !CDshow");
+      sendTwitchMessage("/w drpuppetmaster !CDshow");
       delay(keypress);
       cdcam = 1;     
     }
@@ -378,12 +391,12 @@ if (customKey){
   case 'L':
     Serial.println("L");
     if (botscam) {
-      sendTwitchMessage("/w Changemetoyourbotname !bothide");
+      sendTwitchMessage("/w drpuppetmaster !bothide");
       delay(keypress);
       botscam = 0;
     }
     else if (!botscam) {
-      sendTwitchMessage("/w Changemetoyourbotname !botshow");
+      sendTwitchMessage("/w drpuppetmaster !botshow");
       delay(keypress);
       botscam = 1;     
     }
@@ -399,15 +412,33 @@ if (customKey){
 // Spare
 
   case 'M':
-    Serial.println("M");
-    delay(keypress);
+      Serial.println("M");
+      if (AS) {
+      sendTwitchMessage("/w drpuppetmaster !Arnie");;
+      delay(keypress);
+      AS = 0;
+    }
+    else if (!AS) {
+      sendTwitchMessage("/w drpuppetmaster !ArnieOff");
+      delay(keypress);
+      AS = 1;     
+    }
   break;
 
 // Spare
 
   case 'N':
-    Serial.println("N");
-    delay(keypress);
+      Serial.println("N");
+      if (GTG) {
+      sendTwitchMessage("/w drpuppetmaster !Gandalf");;
+      delay(keypress);
+      GTG = 0;
+    }
+    else if (!GTG) {
+      sendTwitchMessage("/w drpuppetmaster !GandalfOff");
+      delay(keypress);
+      GTG = 1;     
+    }
   break;          
 
 // ROW 5 ---------------------------------
@@ -416,7 +447,7 @@ if (customKey){
 
   case 'O':
     Serial.println("O");
-    sendTwitchMessage("/w Changemetoyourbotname !Stamp");
+    sendTwitchMessage("/w drpuppetmaster !Stamp");
     delay(keypress);
   break;
 
@@ -424,7 +455,7 @@ if (customKey){
 
   case 'P':
     Serial.println("P");
-    sendTwitchMessage("/w Changemetoyourbotname !BS");
+    sendTwitchMessage("/w drpuppetmaster !BS");
     delay(keypress);
   break;
 
@@ -432,7 +463,7 @@ if (customKey){
 
   case 'Q':
     Serial.println("Q");
-    sendTwitchMessage("/w Changemetoyourbotname !Kiss");
+    sendTwitchMessage("/w drpuppetmaster !Kiss");
     delay(keypress);
   break;
 
@@ -440,7 +471,7 @@ if (customKey){
 
   case 'R':
     Serial.println("R");
-    sendTwitchMessage("/w Changemetoyourbotname !Pun");
+    sendTwitchMessage("/w drpuppetmaster !Pun");
     delay(keypress);
   break;
 
@@ -448,7 +479,7 @@ if (customKey){
 
   case 'S':
     Serial.println("S");
-    sendTwitchMessage("/w Changemetoyourbotname !Who");
+    sendTwitchMessage("/w drpuppetmaster !Who");
     delay(keypress);
   break;
 
@@ -456,7 +487,7 @@ if (customKey){
 
   case 'T':
     Serial.println("T");
-    sendTwitchMessage("/w Changemetoyourbotname !Disagree");
+    sendTwitchMessage("/w drpuppetmaster !Disagree");
     delay(keypress);
   break;
 
@@ -464,7 +495,7 @@ if (customKey){
 
   case 'U':
     Serial.println("U");
-    sendTwitchMessage("/w Changemetoyourbotname !Sex");
+    sendTwitchMessage("/w drpuppetmaster !Sex");
     delay(keypress);
   break;
 
@@ -472,7 +503,7 @@ if (customKey){
 
   case 'V':
     Serial.println("V");
-    sendTwitchMessage("/w Changemetoyourbotname !Why");
+    sendTwitchMessage("/w drpuppetmaster !Why");
     delay(keypress);
   break;       
 
@@ -482,7 +513,7 @@ if (customKey){
 
   case 'W': 
     Serial.println("W");
-    sendTwitchMessage("/w Changemetoyourbotname !Goodgame");
+    sendTwitchMessage("/w drpuppetmaster !Goodgame");
     delay(keypress);
   break;
 
@@ -490,7 +521,7 @@ if (customKey){
 
   case 'X':
     Serial.println("X");
-    sendTwitchMessage("/w Changemetoyourbotname !McScuseme");
+    sendTwitchMessage("/w drpuppetmaster !McScuseme");
     delay(keypress);
   break;
 
@@ -498,7 +529,7 @@ if (customKey){
 
   case 'Y':
     Serial.println("Y");
-    sendTwitchMessage("/w Changemetoyourbotname !Cheeseit");
+    sendTwitchMessage("/w drpuppetmaster !Cheeseit");
     delay(keypress);
   break;
 
@@ -506,7 +537,7 @@ if (customKey){
 
   case 'Z':
     Serial.println("Z");
-    sendTwitchMessage("/w Changemetoyourbotname !TechCall");
+    sendTwitchMessage("/w drpuppetmaster !TechCall");
     delay(keypress);
   break;
 
@@ -514,7 +545,7 @@ if (customKey){
 
   case '!':
     Serial.println("!");
-    sendTwitchMessage("/w Changemetoyourbotname !Sthapit");
+    sendTwitchMessage("/w drpuppetmaster !Sthapit");
     delay(keypress);
   break;   
 
@@ -522,7 +553,7 @@ if (customKey){
 
   case '@':
     Serial.println("@");
-    sendTwitchMessage("/w Changemetoyourbotname !Phrasing");
+    sendTwitchMessage("/w drpuppetmaster !Phrasing");
     delay(keypress);
   break;   
 
@@ -530,7 +561,7 @@ if (customKey){
 
   case '#':
     Serial.println("#");
-    sendTwitchMessage("/w Changemetoyourbotname !Reset");
+    sendTwitchMessage("/w drpuppetmaster !Reset");
     delay(keypress);
   break;   
 
@@ -539,7 +570,7 @@ if (customKey){
   case '$':
     Serial.println("$");
     if (muted) {
-      sendTwitchMessage("/w Changemetoyourbotname !Mute");
+      sendTwitchMessage("/w drpuppetmaster !Mute");
       delay(keypress);
       lcd.setCursor(0,1);
       lcd.print("                ");
@@ -548,7 +579,7 @@ if (customKey){
       muted = 0;
     }
     else if (!muted) {
-      sendTwitchMessage("/w Changemetoyourbotname !UnMute");
+      sendTwitchMessage("/w drpuppetmaster !UnMute");
       delay(keypress);
       lcd.setCursor(0,1);
       lcd.print("                ");
