@@ -56,6 +56,8 @@ Wire as per 40KeyWifiSDKCWiring.png
 **Step # 4**
 
 Change the button coding to your specific needs in ESP32TwitchMACROKB.ino
+Also make sure to replace 'Changemetoyourbotname' to your botname
+I uploaded the sketch to the board by choosing 'DOIT ESP32 DEVKIT V1' 
 
 **Step # 5**
 
