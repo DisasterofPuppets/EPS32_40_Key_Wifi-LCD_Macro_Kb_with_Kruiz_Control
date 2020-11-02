@@ -48,6 +48,8 @@ Complete the fields in Creds.h and save
 Print the base.stl and lid.stl files
 I have also included BlankButtonMaster.3mf which should allow you to make most letter combinations for custom blank keys. 
 If there is button label you are unable to make with this let me know and I should be able to update the file for future users.
+Side note* I think the buttons connections are a little snug / undersized, however I simply push them onto an existing MX button I have removed the wires from and this 
+splits them enough to give a good tight fit. 
 
 **Step # 3**
 
