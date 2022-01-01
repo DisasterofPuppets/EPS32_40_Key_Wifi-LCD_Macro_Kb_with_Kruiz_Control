@@ -8,6 +8,9 @@ trigger commands in Kruiz Control and automate OBS Studio scenes etc.
 LCD Screen shows the current button / Scene in play
 Oh, and it's wireless
 
+I used DOIT ESP32 DEVKIT V1 as the board to upload this code
+Don't forget to push the flash button on the ESP32 when uploading
+
 Using https://github.com/fredimachado/ArduinoIRC
 Kruiz Control https://github.com/Kruiser8/Kruiz-Control
 
