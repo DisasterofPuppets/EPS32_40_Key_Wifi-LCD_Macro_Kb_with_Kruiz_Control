@@ -1,4 +1,4 @@
-# 40 Key Macro Keyboard using Kruiz Control
+# Twitch 40 Key Macro Keyboard using Kruiz Control
 ![GitHub Logo](Prototype.jpg)
 
 Disaster of Puppets
